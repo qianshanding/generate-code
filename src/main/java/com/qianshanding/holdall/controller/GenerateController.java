@@ -26,17 +26,17 @@ public class GenerateController {
         String zipFilePath = null;
         try {
             generateBO = new GenerateBO();
-            generateBO.setUrl("jdbc:mysql://127.0.0.1:3306/springbootdb?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true");
+            generateBO.setUrl("jdbc:mysql://127.0.0.1:3306/prophet?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true");
             generateBO.setDriverClassName("com.mysql.jdbc.Driver");
             generateBO.setUserName("root");
             generateBO.setPassword("123123123");
             generateBO.setCreateDal(true);
-            generateBO.setDoPackage("com.qianshanding.test.dataobject");
-            generateBO.setDaoPackage("com.qianshanding.test.dal");
+            generateBO.setDoPackage("com.qianshanding.prophet.config.dal.dataobject");
+            generateBO.setDaoPackage("com.qianshanding.prophet.config.dal");
             generateBO.setMybatisXmlPath("sqlmap");
-            generateBO.setCreateBo(true);
+            generateBO.setCreateBo(false);
             generateBO.setBoPackage("com.qianshanding.test.entity");
-            generateBO.setCreateTransfer(true);
+            generateBO.setCreateTransfer(false);
             generateBO.setTransferPackage("com.qianshanding.test.transfer");
             zipFilePath = generateService.generateCode(generateBO);
         } catch (Exception e) {

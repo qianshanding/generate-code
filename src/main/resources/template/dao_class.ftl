@@ -15,6 +15,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ${className_Java}DAO {
 
+    @Autowired
+    private SqlSession sqlSession;
+
     /**
      * 
      * 方法insert的功能描述：新增${tableComment}
@@ -41,7 +44,7 @@ public class ${className_Java}DAO {
      * 
      * 方法updateById的功能描述：根据Id更新${tableComment}
      * 
-     * @param ${className_Java}DO
+     * @param record
      * @return int
      */
     public int updateById(${className_Java}DO record) {
