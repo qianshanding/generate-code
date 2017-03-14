@@ -1,6 +1,5 @@
-package com.qianshanding.generate.factory;
+package com.qianshanding.holdall.factory;
 
-import com.qianshanding.generate.db.entity.Table;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;

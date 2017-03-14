@@ -1,4 +1,4 @@
-package com.qianshanding.generate.entity;
+package com.qianshanding.holdall.entity;
 
 import lombok.Data;
 

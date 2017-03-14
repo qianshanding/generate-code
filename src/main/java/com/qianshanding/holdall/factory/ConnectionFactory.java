@@ -1,4 +1,4 @@
-package com.qianshanding.generate.factory;
+package com.qianshanding.holdall.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,12 +1,12 @@
-package com.qianshanding.generate.service.support;
+package com.qianshanding.holdall.service.support;
 
-import com.qianshanding.generate.db.entity.DataBase;
-import com.qianshanding.generate.db.entity.Table;
-import com.qianshanding.generate.entity.GenerateBO;
-import com.qianshanding.generate.factory.CodeFactory;
-import com.qianshanding.generate.factory.ConnectionFactory;
-import com.qianshanding.generate.utils.TableUtils;
-import com.qianshanding.generate.utils.ZipHelper;
+import com.qianshanding.holdall.db.entity.DataBase;
+import com.qianshanding.holdall.db.entity.Table;
+import com.qianshanding.holdall.entity.GenerateBO;
+import com.qianshanding.holdall.factory.CodeFactory;
+import com.qianshanding.holdall.factory.ConnectionFactory;
+import com.qianshanding.holdall.utils.TableUtils;
+import com.qianshanding.holdall.utils.ZipHelper;
 import freemarker.template.Configuration;
 
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.qianshanding.generate.utils.Constants.*;
+import static com.qianshanding.holdall.utils.Constants.*;
 
 /**
  * Created by fish on 2016/10/17.

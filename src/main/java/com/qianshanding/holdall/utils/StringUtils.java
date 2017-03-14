@@ -1,4 +1,4 @@
-package com.qianshanding.generate.utils;
+package com.qianshanding.holdall.utils;
 
 /**
  * 字符串工具类

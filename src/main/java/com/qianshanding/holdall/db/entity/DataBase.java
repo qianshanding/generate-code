@@ -1,11 +1,11 @@
-package com.qianshanding.generate.db.entity;
+package com.qianshanding.holdall.db.entity;
 
 import lombok.Data;
 
 import java.util.List;
 
 /**
- * Created by zhengyu on 2017/3/14.
+ * Created by fish on 2017/3/14.
  */
 @Data
 public class DataBase {

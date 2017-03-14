@@ -1,9 +1,9 @@
-package com.qianshanding.generate.utils;
+package com.qianshanding.holdall.utils;
 
-import com.qianshanding.generate.db.entity.Table;
-import com.qianshanding.generate.db.entity.TableBind;
-import com.qianshanding.generate.db.entity.TableCarray;
-import com.qianshanding.generate.db.entity.TableIndex;
+import com.qianshanding.holdall.db.entity.Table;
+import com.qianshanding.holdall.db.entity.TableBind;
+import com.qianshanding.holdall.db.entity.TableCarray;
+import com.qianshanding.holdall.db.entity.TableIndex;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
