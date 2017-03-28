@@ -16,17 +16,18 @@ public class ConnectionFactory {
         super();
     }
 
-    public static Connection getConnection(String driverClassName, String url, String userName, String passWord) {
+    public static Connection getConnection(String driverClassName, String url, String userName,
+                                           String passWord) throws Exception {
         if (conn == null) {
             try {
                 Class.forName(driverClassName);
                 try {
                     conn = DriverManager.getConnection(url, userName, passWord);
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    throw new Exception(e.getMessage(), e);
                 }
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                throw new Exception(e.getMessage(), e);
             }
         }
         return conn;

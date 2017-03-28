@@ -28,7 +28,7 @@ public class AutoGenerateCode {
     public String generate(GenerateBO generateBO) throws Exception {
         this.gb = generateBO;
         Connection conn = ConnectionFactory.getConnection(gb.getDriverClassName(), gb.getUrl()
-                , gb.getUserName(), gb.getPassword());
+                , gb.getUserName(), gb.getPassWord());
         String zipFilePath = null;
         try {
             tables = TableUtils.getTables(conn, gb.getAuthor(), gb.getTableNames());

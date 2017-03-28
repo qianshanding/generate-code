@@ -13,19 +13,19 @@ public class GenerateBO implements Serializable {
     /**
      * 是否生成Dal
      */
-    private boolean isCreateDal;
+    private boolean createDal = true;
     /**
      * 是否生成BO
      */
-    private boolean isCreateBo;
+    private boolean createBo;
     /**
      * 是否生成Transfer
      */
-    private boolean isCreateTransfer;
+    private boolean createTransfer;
     /**
      * 是否生成service层
      */
-    private boolean isCreateService;
+    private boolean createService;
     /**
      * DO包路径
      */
@@ -37,7 +37,7 @@ public class GenerateBO implements Serializable {
     /**
      * mybatis mapper文件路径
      */
-    private String mybatisXmlPath;
+    private String mybatisXmlPath = "sqlmap";
     /**
      * bo包路径
      */
@@ -63,7 +63,11 @@ public class GenerateBO implements Serializable {
      * mysql连接信息
      */
     private String url;
-    private String driverClassName;
-    private String userName;
-    private String password;
+    private String driverClassName = "com.mysql.jdbc.Driver";
+    private String userName = "root";
+    private String passWord = "root";
+
+    private String databaseIp = "127.0.0.1";
+    private String database;
+    private Integer port = 3306;
 }
