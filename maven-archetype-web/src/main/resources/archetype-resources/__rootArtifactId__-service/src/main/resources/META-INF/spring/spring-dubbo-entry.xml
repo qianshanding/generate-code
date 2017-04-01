@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:annotation-config />
+
+    <dubbo:protocol name="nova" port="${application.nova.port}"/>
+    <dubbo:protocol name="rest" port="${application.rest.port}"/>
+
+    <!--启动心跳检测-->
+    <dubbo:service interface="com.qsd.platform.bootstrap.service.ok.OkService"
+                   class="com.qsd.platform.bootstrap.service.ok.impl.OkServiceImpl"
+                   protocol="rest" registry="haunt" />
+
+    <import resource="classpath:applicationContext.xml"/>
+    <import resource="classpath*:biz/dubbo/dubbo-*.xml" />
+
+
+</beans>
+
+

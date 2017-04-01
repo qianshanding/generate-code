@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--<plugins>-->
+        <!--<plugin interceptor="com.architecture.third.mybatis.monitor.SqlMonitorManager">-->
+            <!--<property name="sql_monitor" value="true"/>-->
+            <!--&lt;!&ndash;sql时延的阈值,超过会打印error日志数据   &ndash;&gt;-->
+            <!--<property name="overtime_print_error" value="300"/>-->
+        <!--</plugin>-->
+    <!--</plugins>-->
+
+</configuration>
