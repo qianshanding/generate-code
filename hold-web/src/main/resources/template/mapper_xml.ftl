@@ -49,14 +49,14 @@
 	</delete>
 	
 	<update id="updateById" parameterMap="${className_Java}DO">
-        update ${className_x} set 
-        <#list tableCarrays as tableCarray>
-        	<#if tableCarray.carrayName!="id"&&tableCarray.carrayName!="createTime"&&tableCarray.carrayName!="updateTime">
-	        	<if test="${tableCarray.carrayName}!=null">
-					${tableCarray.carrayName_x} = ${prefix}${tableCarray.carrayName}},
-				</if>
-			</#if>
-		</#list>
+        update ${className_x}
+        <set >
+			<#list tableCarrays as tableCarray>
+				<#if tableCarray.carrayName!="id"&&tableCarray.carrayName!="createTime">
+			<if test="${tableCarray.carrayName}!=null">${tableCarray.carrayName_x} = ${prefix}${tableCarray.carrayName}},</if>
+				</#if>
+			</#list>
+        </set>
         where id = ${prefix}id}        		
 	</update>
 	

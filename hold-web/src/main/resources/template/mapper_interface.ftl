@@ -2,11 +2,11 @@ package ${daoPackage};
 
 import ${doPackage}.${className_Java}DO;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 /**
- * ${tableComment} Mapper
- * 
  * @Author ${author}
  * @Date ${createDate}
  */

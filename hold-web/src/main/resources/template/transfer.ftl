@@ -2,6 +2,8 @@ package ${transferPackage};
 
 import ${doPackage}.${className_Java}DO;
 import ${boPackage}.${className_Java}BO;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author ${author}
@@ -36,5 +38,27 @@ public class ${className_Java}Transfer {
         </#if>
         </#list>
         return targetObj;
+    }
+
+    public static List<${className_Java}DO> toDOList(List<${className_Java}BO> boList) {
+        if (boList == null) {
+            return null;
+        }
+        List<${className_Java}DO> doList = new ArrayList<>();
+        for (${className_Java}BO bo : boList) {
+            doList.add(${className}BOToDO(bo));
+        }
+        return doList;
+    }
+
+    public static List<${className_Java}BO> toBOList(List<${className_Java}DO> doList) {
+        if (doList == null) {
+            return null;
+        }
+        List<${className_Java}BO> boList = new ArrayList<>();
+        for (${className_Java}DO d : doList) {
+            boList.add(${className}DOToBO(d));
+        }
+        return boList;
     }
 }
