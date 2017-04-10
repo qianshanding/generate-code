@@ -9,7 +9,7 @@ import java.util.List;
  * Created by fish on 2017/3/5.
  */
 @Data
-public class GenerateBO implements Serializable {
+public class CodeBO implements Serializable {
     /**
      * 是否生成Dal
      */

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="${className_Java}Dao">
+<mapper namespace="${daoPackage}.${className_Java}Mapper">
 	<resultMap id="BaseResultMap" type="${doPackage}.${className_Java}DO">
 	<#list tableCarrays as tableCarray>
-		<result column="${tableCarray.carrayName_x}" property="${tableCarray.carrayName}" />
+		<result column="${tableCarray.carrayName_x}" property="${tableCarray.carrayName}"/>
 	</#list>
 	</resultMap>
 	
@@ -31,6 +31,18 @@
 			${stringCarrayNames4}
 		)
 	</insert>
+
+    <insert id="batchInsert" useGeneratedKeys="true" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        insert into ${className_x} (${stringCarrayNames3})
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+			(${stringCarrayNames6})
+        </foreach>
+    </insert>
 	
 	<delete id="deleteById" parameterType="java.lang.Long">
 		delete from ${className_x} where id = ${prefix}id}
@@ -45,7 +57,6 @@
 				</if>
 			</#if>
 		</#list>
-		update_time = now()
         where id = ${prefix}id}        		
 	</update>
 	

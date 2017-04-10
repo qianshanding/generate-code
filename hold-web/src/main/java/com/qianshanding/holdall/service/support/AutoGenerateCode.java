@@ -2,7 +2,7 @@ package com.qianshanding.holdall.service.support;
 
 import com.qianshanding.holdall.db.entity.DataBase;
 import com.qianshanding.holdall.db.entity.Table;
-import com.qianshanding.holdall.entity.GenerateBO;
+import com.qianshanding.holdall.entity.CodeBO;
 import com.qianshanding.holdall.factory.CodeFactory;
 import com.qianshanding.holdall.factory.ConnectionFactory;
 import com.qianshanding.holdall.utils.TableUtils;
@@ -22,10 +22,10 @@ import static com.qianshanding.holdall.utils.Constants.*;
 public class AutoGenerateCode {
     private List<Table> tables = null;
     private Configuration configuration = null;
-    private GenerateBO gb;
+    private CodeBO gb;
     private String sourcePath;
 
-    public String generate(GenerateBO generateBO) throws Exception {
+    public String generate(CodeBO generateBO, String basePath) throws Exception {
         this.gb = generateBO;
         Connection conn = ConnectionFactory.getConnection(gb.getDriverClassName(), gb.getUrl()
                 , gb.getUserName(), gb.getPassWord());
@@ -33,9 +33,8 @@ public class AutoGenerateCode {
         try {
             tables = TableUtils.getTables(conn, gb.getAuthor(), gb.getTableNames());
             configuration = CodeFactory.getConfiguration();
-            String rootPath = System.getProperty("user.dir") + "/";
             String fileName = generateRandomDir();
-            sourcePath = rootPath + fileName + "/";
+            sourcePath = basePath + "/" + fileName + "/";
             List<String> tableList = new ArrayList<String>();
             List<String> tableMlList = new ArrayList<String>();
             for (Table table : tables) {
@@ -57,7 +56,8 @@ public class AutoGenerateCode {
                 if (gb.isCreateDal()) {
                     outDO(table);
                     outMapperXml(table);
-                    outDaoClass(table);
+//                    outDaoClass(table);
+                    outMapperClass(table);
                     tableList.add(table.getClassName_Java());
                     tableMlList.add(table.getClassName_ml());
                 }
@@ -71,7 +71,7 @@ public class AutoGenerateCode {
                 outSpringMybatis(gb);
                 outMybatisConfig(dataBase);
             }
-            zipFilePath = rootPath + fileName + ".zip";
+            zipFilePath = basePath + "/" + fileName + ".zip";
             //压缩成zip
             ZipHelper.zip(sourcePath, zipFilePath);
         } catch (Exception e) {
@@ -102,6 +102,18 @@ public class AutoGenerateCode {
         packageName = packageName.replace(".", "/");
         String filePath = sourcePath + packageName;
         CodeFactory.dataSourceOut(configuration, "dao_class.ftl", table, table.getClassName_Java() + DAO_SUFFIX, filePath);
+    }
+
+    /**
+     * 生成Mapper类
+     *
+     * @param table
+     */
+    public void outMapperClass(Table table) {
+        String packageName = gb.getDaoPackage();
+        packageName = packageName.replace(".", "/");
+        String filePath = sourcePath + packageName;
+        CodeFactory.dataSourceOut(configuration, "mapper_interface.ftl", table, table.getClassName_Java() + MAPPER_SUFFIX, filePath);
     }
 
     /**
@@ -144,7 +156,7 @@ public class AutoGenerateCode {
      *
      * @param gb
      */
-    public void outSpringMybatis(GenerateBO gb) {
+    public void outSpringMybatis(CodeBO gb) {
         String filePath = sourcePath + "resources";
         CodeFactory.dataSourceOut(configuration, "spring_mybatis.ftl", gb, "spring-mybatis.xml", filePath);
     }

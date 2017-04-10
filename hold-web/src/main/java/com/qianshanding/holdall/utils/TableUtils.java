@@ -259,6 +259,7 @@ public class TableUtils {
             String stringCarrayNames3 = "";
             String stringCarrayNames4 = "";
             String stringCarrayNames5 = "";
+            String stringCarrayNames6 = "";
             for (TableCarray tableCarray : tableCarrays) {
                 if (!"".endsWith(stringCarrayNames1)) {
                     stringCarrayNames1 += ", ";
@@ -275,12 +276,17 @@ public class TableUtils {
                 if (!"".endsWith(stringCarrayNames5)) {
                     stringCarrayNames5 += ", ";
                 }
+                if (!"".endsWith(stringCarrayNames6)) {
+                    stringCarrayNames6 += ", ";
+                }
                 stringCarrayNames1 += tableCarray.getCarrayName_x();
                 stringCarrayNames2 += tableCarray.getCarrayType() + " "
                         + tableCarray.getCarrayName_x();
                 if (!"id".equals(tableCarray.getCarrayName_x())) {
                     stringCarrayNames3 += tableCarray.getCarrayName_x();
                     stringCarrayNames4 += String.format("#{%s}", tableCarray
+                            .getCarrayName());
+                    stringCarrayNames6 += String.format("#{item.%s}", tableCarray
                             .getCarrayName());
                 }
 
@@ -290,7 +296,7 @@ public class TableUtils {
             table = new Table(className, className_d, className_x, className_ml, className_Java, tableCarrays, tableIndexs,
                     tableBinds, importPojos, stringCarrayNames1,
                     stringCarrayNames2, stringCarrayNames3, stringCarrayNames4,
-                    stringCarrayNames5, tableComment, createDate, author);
+                    stringCarrayNames5, stringCarrayNames6, tableComment, createDate, author);
             tables.add(table);
         }
         return tables;

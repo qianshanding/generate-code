@@ -12,7 +12,7 @@
             <directory>target/classes</directory>
             <outputDirectory>bin</outputDirectory>
             <includes>
-                <include>**/*.sh</include>
+                <include>**/boot.sh</include>
             </includes>
             <fileMode>0777</fileMode>
         </fileSet>

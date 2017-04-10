@@ -23,7 +23,7 @@ public class TableIndex {
 	private String stringCarrayNames3;// 类型+ ","拼接大写字段
 	private String stringCarrayNames4;// ","拼接小写字段
 	private String stringCarrayNames5;// sqlMap中sql用的 原字段-小写字段
-	private String stringCarrayNames6;//Java属性规范
+	private String stringCarrayNames6;// Java属性规范
 	private boolean unique; // 是否唯一索引
 
 	public TableIndex(String indexName, List<String> carrayNames,
